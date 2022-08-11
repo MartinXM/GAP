@@ -127,14 +127,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# Data and models
-work_dir/
-data/
-data
-
-# clip
-clip/__pycache__/
-
-## script
-train.sh
