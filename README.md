@@ -14,7 +14,7 @@ Skeleton-based action recognition has drawn a lot of attention for its computati
 - Python >= 3.6
 - PyTorch >= 1.1.0
 - PyYAML, tqdm, tensorboardX
-- 
+
 
 - We provide the dependency file of our experimental environment, you can install all dependencies by creating a new anaconda virtual environment and running `pip install -r requirements.txt `
 - Run `pip install -e torchlight` 
@@ -127,10 +127,12 @@ Thanks to the original authors for their work!
 
 # Citation
 
-Please cite this work if you find it useful:.
+Please cite this work if you find it useful:
+```
       @article{xiang2022lst,
         title={Language Supervised Training for Skeleton-based Action Recognition},
         author={Wangmeng Xiang, Chao Li, Yuxuan Zhou, Biao Wang, Lei Zhang},
         journal={arXiv preprint arXiv:2208.05318},
         year={2022}
       }
+```
