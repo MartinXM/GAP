@@ -1,6 +1,10 @@
 # LST
 This repo is the official implementation for ["LST: Language Supervised Training for Skeleton-based Action Recognition"](https://arxiv.org/abs/2208.05318)
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/language-supervised-training-for-skeleton/skeleton-based-action-recognition-on-ntu-rgbd-1)](https://paperswithcode.com/sota/skeleton-based-action-recognition-on-ntu-rgbd-1?p=language-supervised-training-for-skeleton)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/language-supervised-training-for-skeleton/skeleton-based-action-recognition-on-n-ucla)](https://paperswithcode.com/sota/skeleton-based-action-recognition-on-n-ucla?p=language-supervised-training-for-skeleton)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/language-supervised-training-for-skeleton/skeleton-based-action-recognition-on-ntu-rgbd)](https://paperswithcode.com/sota/skeleton-based-action-recognition-on-ntu-rgbd?p=language-supervised-training-for-skeleton)
+
 ## Introduction
 
 Skeleton-based action recognition has drawn a lot of attention for its computation efficiency and robustness to lighting conditions. Existing skeleton-based action recognition methods are typically formulated as a one-hot classification task without fully utilizing the semantic relations between actions. For example, "make victory sign" and "thumb up" are two actions of hand gestures, whose major difference lies in the movement of hands. This information is agnostic from the categorical one-hot encoding of action classes but could be unveiled in the language description of actions. Therefore, utilizing action language descriptions in training could potentially benefit representation learning. In this work, we propose a Language Supervised Training (LST) approach for skeleton-based action recognition. More specifically, we employ a large-scale language model as the knowledge engine to provide text descriptions for body parts movements of actions, and propose a multi-modal training scheme by utilizing the text encoder to generate feature vectors for different body parts and supervise the skeleton encoder for action representation learning. Experiments show that our proposed LST method achieves noticeable improvements over various baseline models without extra computation cost at inference. LST achieves new state-of-the-arts on popular skeleton-based action recognition benchmarks, including NTU RGB+D, NTU RGB+D 120 and NW-UCLA.
@@ -128,11 +132,11 @@ Thanks to the original authors for their work!
 # Citation
 
 Please cite this work if you find it useful:
-```
-      @article{xiang2022lst,
-        title={Language Supervised Training for Skeleton-based Action Recognition},
-        author={Wangmeng Xiang, Chao Li, Yuxuan Zhou, Biao Wang, Lei Zhang},
-        journal={arXiv preprint arXiv:2208.05318},
-        year={2022}
-      }
+```BibTex
+@article{xiang2022lst,
+    title={Language Supervised Training for Skeleton-based Action Recognition},
+    author={Wangmeng Xiang, Chao Li, Yuxuan Zhou, Biao Wang, Lei Zhang},
+    journal={arXiv preprint arXiv:2208.05318},
+    year={2022}
+}
 ```
