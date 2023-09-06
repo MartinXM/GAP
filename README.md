@@ -1,5 +1,6 @@
-# LST
-This repo is the official implementation for ["LST: Language Supervised Training for Skeleton-based Action Recognition"](https://arxiv.org/abs/2208.05318)
+# GAP
+This repo is the official implementation for ICCV23 paper ["GAP: Generative Action Description Prompts for Skeleton-based Action Recognition"](https://arxiv.org/abs/2208.05318)
+previously known as ["LST: Language Supervised Training for Skeleton-based Action Recognition"](https://arxiv.org/abs/2208.05318) (arxiv version)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/language-supervised-training-for-skeleton/skeleton-based-action-recognition-on-ntu-rgbd-1)](https://paperswithcode.com/sota/skeleton-based-action-recognition-on-ntu-rgbd-1?p=language-supervised-training-for-skeleton)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/language-supervised-training-for-skeleton/skeleton-based-action-recognition-on-n-ucla)](https://paperswithcode.com/sota/skeleton-based-action-recognition-on-n-ucla?p=language-supervised-training-for-skeleton)
@@ -7,9 +8,9 @@ This repo is the official implementation for ["LST: Language Supervised Training
 
 ## Introduction
 
-Skeleton-based action recognition has drawn a lot of attention for its computation efficiency and robustness to lighting conditions. Existing skeleton-based action recognition methods are typically formulated as a one-hot classification task without fully utilizing the semantic relations between actions. For example, "make victory sign" and "thumb up" are two actions of hand gestures, whose major difference lies in the movement of hands. This information is agnostic from the categorical one-hot encoding of action classes but could be unveiled in the language description of actions. Therefore, utilizing action language descriptions in training could potentially benefit representation learning. In this work, we propose a Language Supervised Training (LST) approach for skeleton-based action recognition. More specifically, we employ a large-scale language model as the knowledge engine to provide text descriptions for body parts movements of actions, and propose a multi-modal training scheme by utilizing the text encoder to generate feature vectors for different body parts and supervise the skeleton encoder for action representation learning. Experiments show that our proposed LST method achieves noticeable improvements over various baseline models without extra computation cost at inference. LST achieves new state-of-the-arts on popular skeleton-based action recognition benchmarks, including NTU RGB+D, NTU RGB+D 120 and NW-UCLA.
+   Skeleton-based action recognition has recently received considerable attention. Current approaches to skeleton-based action recognition are typically formulated as one-hot classification tasks and do not fully exploit the semantic relations between actions. For example, "make victory sign" and "thumb up" are two actions of hand gestures, whose major difference lies in the movement of hands. This information is agnostic from the categorical one-hot encoding of action classes but could be unveiled from the action description. Therefore, utilizing action description in training could potentially benefit representation learning. In this work, we propose a Generative Action-description Prompts (GAP) approach for skeleton-based action recognition. More specifically, we employ a pre-trained large-scale language model as the knowledge engine to automatically generate text descriptions for body parts movements of actions, and propose a multi-modal training scheme by utilizing the text encoder to generate feature vectors for different body parts and supervise the skeleton encoder for action representation learning. Experiments show that our proposed GAP method achieves noticeable improvements over various baseline models without extra computation cost at inference. GAP achieves new state-of-the-arts on popular skeleton-based action recognition benchmarks, including NTU RGB+D, NTU RGB+D 120 and NW-UCLA.
 
-## Architecture of LST
+## Architecture of GAP
 
 ![teaser](figures/teaser.png)
 
@@ -91,13 +92,13 @@ Put downloaded data into the following directory structure:
 - To train model on NTU60/120
 
 ```
-# Example: training LST on NTU RGB+D cross subject joint modality
+# Example: training GAP on NTU RGB+D cross subject joint modality
 CUDA_VISIBLE_DEVICES=0,1 python main_multipart_ntu.py --config config/nturgbd-cross-subject/lst_joint.yaml --model model.ctrgcn.Model_lst_4part --work-dir work_dir/ntu60/csub/lst_joint --device 0 1
-# Example: training LST on NTU RGB+D cross subject bone modality
+# Example: training GAP on NTU RGB+D cross subject bone modality
 CUDA_VISIBLE_DEVICES=0,1 python main_multipart_ntu.py --config config/nturgbd-cross-subject/lst_bone.yaml --model model.ctrgcn.Model_lst_4part_bone --work-dir work_dir/ntu60/csub/lst_bone --device 0 1
-# Example: training LST on NTU RGB+D 120 cross subject joint modality
+# Example: training GAP on NTU RGB+D 120 cross subject joint modality
 CUDA_VISIBLE_DEVICES=0,1 python main_multipart_ntu.py --config config/nturgbd120-cross-subject/lst_joint.yaml --model model.ctrgcn.Model_lst_4part --work-dir work_dir/ntu120/csub/lst_joint --device 0 1
-# Example: training LST on NTU RGB+D 120 cross subject bone modality
+# Example: training GAP on NTU RGB+D 120 cross subject bone modality
 CUDA_VISIBLE_DEVICES=0,1 python main_multipart_ntu.py --config config/nturgbd120-cross-subject/lst_bone.yaml --model model.ctrgcn.Model_lst_4part_bone --work-dir work_dir/ntu120/csub/lst_bone --device 0 1
 ```
 
@@ -119,7 +120,7 @@ python main_multipart_ntu.py --config <work_dir>/config.yaml --work-dir <work_di
 
 - To ensemble the results of different modalities, run 
 ```
-# Example: ensemble four modalities of LST on NTU RGB+D 120 cross subject
+# Example: ensemble four modalities of GAP on NTU RGB+D 120 cross subject
 python ensemble.py --datasets ntu120/xsub --joint-dir work_dir/ntu120/csub/lst_joint --bone-dir work_dir/ntu120/csub/lst_bone --joint-motion-dir work_dir/ntu120/csub/lst_joint_vel --bone-motion-dir work_dir/ntu120/csub/lst_bone_vel
 ```
 
@@ -133,6 +134,13 @@ Thanks to the original authors for their work!
 
 Please cite this work if you find it useful:
 ```BibTex
+@inproceedings{xiang2023gap,
+    title={Generative Action Description Prompts for Skeleton-based Action Recognition},
+    author={Wangmeng Xiang, Chao Li, Yuxuan Zhou, Biao Wang, Lei Zhang},
+    booktitle={ICCV},
+    year={2023}
+}
+
 @article{xiang2022lst,
     title={Language Supervised Training for Skeleton-based Action Recognition},
     author={Wangmeng Xiang, Chao Li, Yuxuan Zhou, Biao Wang, Lei Zhang},
